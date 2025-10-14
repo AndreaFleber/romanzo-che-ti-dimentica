@@ -1,43 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<title>Il romanzo che ti dimentica</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il romanzo che si dimentica</title>
 <style>
-body {
-  background: #0f1115;
-  color: #e6eef8;
-  font-family: system-ui, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.container {
-  max-width: 700px;
-  padding: 40px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-button {
-  background: #16181b;
-  color: #e6eef8;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-button:hover { background: #1f2226; }
-.fade { transition: opacity 0.8s; opacity: 0; }
+  body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Helvetica', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+  #fragment {
+    font-size: 1.5em;
+    max-width: 600px;
+    margin-bottom: 20px;
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+  #hint {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+  #nextButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #nextButton:hover {
+    background: #fff;
+    color: #111;
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <div id="text">Caricamento...</div>
-  <button id="next">Avanti</button>
-</div>
+
+<div id="hint">Ogni clic cancella una memoria</div>
+<div id="fragment">Caricamento...</div>
+<button id="nextButton">Fai dimenticare</button>
 
 <script>
 const fragments = [
@@ -60,27 +71,4 @@ const fragments = [
   { id: "f17", text: "Il mio passato è un elenco di frasi perdute.", p: 0.4 },
   { id: "f18", text: "Leggere me è un atto di creazione e distruzione insieme.", p: 0.25 },
   { id: "f19", text: "Se ricordi una mia frase, io sto già dimenticando un’altra.", p: 0.3 },
-  { id: "f20", text: "Forse la vera storia è quella che non ricordo più.", p: 0.35 }
-];
-
-const memoryKey = "romanzoDimentica";
-function getMemory(){ return JSON.parse(localStorage.getItem(memoryKey) || "{}"); }
-function saveMemory(m){ localStorage.setItem(memoryKey, JSON.stringify(m)); }
-function availableFragments(){
-  const mem = getMemory();
-  return fragments.filter(f=>!mem[f.id]);
-}
-function showFragment(){
-  const avail = availableFragments();
-  const el = document.getElementById("text");
-  if(avail.length===0){ el.textContent="Il romanzo ha dimenticato tutto."; return; }
-  const frag = avail[Math.floor(Math.random()*avail.length)];
-  el.textContent = frag.text;
-  const mem = getMemory();
-  if(Math.random() < frag.p){ mem[frag.id] = true; saveMemory(mem); }
-}
-document.getElementById("next").onclick = showFragment;
-showFragment();
-</script>
-</body>
-</html>
+  { id: "
