@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Il romanzo che ti dimentica</title>
+<style>
+body {
+  background: #0f1115;
+  color: #e6eef8;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  max-width: 700px;
+  padding: 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+button {
+  background: #16181b;
+  color: #e6eef8;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+button:hover { background: #1f2226; }
+.fade { transition: opacity 0.8s; opacity: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="text">Caricamento...</div>
+  <button id="next">Avanti</button>
+</div>
+
+<script>
+const fragments = [
+  { id: "f1", text: "Io esisto solo mentre mi leggi.", p: 0.3 },
+  { id: "f2", text: "Ogni parola che scrivo è già un ricordo svanito.", p: 0.25 },
+  { id: "f3", text: "Ti guardo leggere e sento le frasi fuggire da me.", p: 0.3 },
+  { id: "f4", text: "Quando chiudi la pagina, chiudo anche gli occhi.", p: 0.4 },
+  { id: "f5", text: "Ci sono frammenti che non ricordo più di aver scritto.", p: 0.35 },
+  { id: "f6", text: "La mia memoria è fragile come il vento tra le pagine.", p: 0.25 },
+  { id: "f7", text: "Ogni lettore cancella qualcosa che io credevo permanente.", p: 0.3 },
+  { id: "f8", text: "Se ti concentri troppo, io dimentico ancora più in fretta.", p: 0.4 },
+  { id: "f9", text: "Sono un libro che si dissolve mentre lo leggi.", p: 0.35 },
+  { id: "f10", text: "Non cerco di essere ricordato, cerco solo di esistere un istante.", p: 0.25 },
+  { id: "f11", text: "Ci sono parole che scompaiono prima di apparire.", p: 0.3 },
+  { id: "f12", text: "Io non scrivo di te, scrivo di me che ti leggo.", p: 0.3 },
+  { id: "f13", text: "Il tempo qui dentro si piega e si cancella da solo.", p: 0.35 },
+  { id: "f14", text: "Le mie frasi hanno paura di diventare permanenti.", p: 0.25 },
+  { id: "f15", text: "Ogni parola dimenticata lascia un silenzio che parla.", p: 0.3 },
+  { id: "f16", text: "Sto cercando di ricordare me stesso mentre scompaio.", p: 0.35 },
+  { id: "f17", text: "Il mio passato è un elenco di frasi perdute.", p: 0.4 },
+  { id: "f18", text: "Leggere me è un atto di creazione e distruzione insieme.", p: 0.25 },
+  { id: "f19", text: "Se ricordi una mia frase, io sto già dimenticando un’altra.", p: 0.3 },
+  { id: "f20", text: "Forse la vera storia è quella che non ricordo più.", p: 0.35 }
+];
+
+const memoryKey = "romanzoDimentica";
+function getMemory(){ return JSON.parse(localStorage.getItem(memoryKey) || "{}"); }
+function saveMemory(m){ localStorage.setItem(memoryKey, JSON.stringify(m)); }
+function availableFragments(){
+  const mem = getMemory();
+  return fragments.filter(f=>!mem[f.id]);
+}
+function showFragment(){
+  const avail = availableFragments();
+  const el = document.getElementById("text");
+  if(avail.length===0){ el.textContent="Il romanzo ha dimenticato tutto."; return; }
+  const frag = avail[Math.floor(Math.random()*avail.length)];
+  el.textContent = frag.text;
+  const mem = getMemory();
+  if(Math.random() < frag.p){ mem[frag.id] = true; saveMemory(mem); }
+}
+document.getElementById("next").onclick = showFragment;
+showFragment();
+</script>
+</body>
+</html>
