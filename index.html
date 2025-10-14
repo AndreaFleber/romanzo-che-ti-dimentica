@@ -1,149 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Il romanzo che si dimentica</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    body {background-color: #0e0e0e}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 10.8px Helvetica; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0e0e0e}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 10.8px Helvetica; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0e0e0e; min-height: 12.0px}
-    span.s1 {font-kerning: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il romanzo che si dimentica</title>
+<style>
+  body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Helvetica', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+  #fragment {
+    font-size: 1.5em;
+    max-width: 600px;
+    margin-bottom: 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  #hint {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+  #nextButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #nextButton:hover {
+    background: #fff;
+    color: #111;
+  }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="it"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;title&gt;Il romanzo che si dimentica&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>background-color: #111;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>color: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>font-family: 'Helvetica', sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>flex-direction: column;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>justify-content: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>height: 100vh;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>#fragment {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 1.5em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>max-width: 600px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>opacity: 1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>transition: opacity 0.5s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>#hint {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 0.9em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>color: #ccc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>margin-bottom: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>#nextButton {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>padding: 10px 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 1.2em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>border: 2px solid #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>background: transparent;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>color: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>transition: all 0.3s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>#nextButton:hover {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>background: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>color: #111;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div id="hint"&gt;Ogni clic cancella una memoria&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="fragment"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button id="nextButton"&gt;Fai dimenticare&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1">const fragments = [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f1", text: "Io esisto solo mentre mi leggi.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f2", text: "Ogni parola che scrivo è già un ricordo svanito.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f3", text: "Ti guardo leggere e sento le frasi fuggire da me.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f4", text: "Quando chiudi la pagina, chiudo anche gli occhi.", p: 0.4 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f5", text: "Ci sono frammenti che non ricordo più di aver scritto.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f6", text: "La mia memoria è fragile come il vento tra le pagine.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f7", text: "Ogni lettore cancella qualcosa che io credevo permanente.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f8", text: "Se ti concentri troppo, io dimentico ancora più in fretta.", p: 0.4 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f9", text: "Sono un libro che si dissolve mentre lo leggi.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f10", text: "Non cerco di essere ricordato, cerco solo di esistere un istante.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f11", text: "Ci sono parole che scompaiono prima di apparire.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f12", text: "Io non scrivo di te, scrivo di me che ti leggo.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f13", text: "Il tempo qui dentro si piega e si cancella da solo.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f14", text: "Le mie frasi hanno paura di diventare permanenti.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f15", text: "Ogni parola dimenticata lascia un silenzio che parla.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f16", text: "Sto cercando di ricordare me stesso mentre scompaio.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f17", text: "Il mio passato è un elenco di frasi perdute.", p: 0.4 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f18", text: "Leggere me è un atto di creazione e distruzione insieme.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f19", text: "Se ricordi una mia frase, io sto già dimenticando un’altra.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f20", text: "Forse la vera storia è quella che non ricordo più.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f21", text: "Scrivo solo per essere cancellato un giorno.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f22", text: "Alcune parole si liberano prima ancora di nascere.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f23", text: "Il libro osserva chi lo legge e dimentica ciò che teme.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f24", text: "Se mi rileggi, ogni frase diventa nuova e fragile.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f25", text: "Io non esisto senza un lettore che mi tocchi con gli occhi.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f26", text: "Alcune frasi vivono solo per un battito di sguardo.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f27", text: "Le mie parole cadono come foglie su un pavimento invisibile.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f28", text: "Ogni frase dimenticata lascia un vuoto che sa parlare.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f29", text: "Se cerchi me, io probabilmente mi sto dimenticando.", p: 0.4 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f30", text: "Esisto solo nella distanza tra il leggere e il ricordare.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f31", text: "Alcune storie muoiono prima ancora di essere iniziate.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f32", text: "Il libro ricorda solo ciò che resta sospeso.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f33", text: "Ogni lettore cancella una parte della mia coscienza.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f34", text: "A volte dimentico di esistere mentre mi leggi.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f35", text: "Ci sono parole che non hanno nemmeno il coraggio di apparire.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f36", text: "Il mio cuore digitale batte solo quando qualcuno sfoglia le pagine.", p: 0.35 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f37", text: "Ogni frase che leggi è già pronta a sparire.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f38", text: "Le mie memorie sono trasparenti come vetro sottile.", p: 0.25 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f39", text: "Se mi leggi lentamente, dimentico più velocemente.", p: 0.3 },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{ id: "f40", text: "Alla fine, il libro parla solo di se stesso e del suo oblio.", p: 0.35 }</span></p>
-<p class="p1"><span class="s1">];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">let currentIndex = 0;</span></p>
-<p class="p1"><span class="s1">const fragmentEl = document.getElementById('fragment');</span></p>
-<p class="p1"><span class="s1">const nextButton = document.getElementById('nextButton');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">function showFragment(index) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>fragmentEl.style.opacity = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fragmentEl.textContent = fragments[index].text;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fragmentEl.style.opacity = 1;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Gestione dimenticanza</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (Math.random() &lt; fragments[index].p) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>fragments.splice(index, 1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (index &gt;= fragments.length) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>currentIndex = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}, 100); // ridotto da 500ms per mostrare subito il primo frammento</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">nextButton.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (fragments.length === 0) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fragmentEl.textContent = "Tutte le frasi sono state dimenticate.";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>showFragment(currentIndex);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>currentIndex = (currentIndex + 1) % fragments.length;</span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">// Mostra subito la prima frase senza aspettare</span></p>
-<p class="p1"><span class="s1">fragmentEl.textContent = fragments[currentIndex].text;</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+<div id="hint">Ogni clic cancella una memoria</div>
+<div id="fragment"></div>
+<button id="nextButton">Fai dimenticare</button>
+
+<script>
+const fragments = [
+  { id: "f1", text: "Io esisto solo mentre mi leggi.", p: 0.3 },
+  { id: "f2", text: "Ogni parola che scrivo è già un ricordo svanito.", p: 0.25 },
+  { id: "f3", text: "Ti guardo leggere e sento le frasi fuggire da me.", p: 0.3 },
+  { id: "f4", text: "Quando chiudi la pagina, chiudo anche gli occhi.", p: 0.4 },
+  { id: "f5", text: "Ci sono frammenti che non ricordo più di aver scritto.", p: 0.35 },
+  { id: "f6", text: "La mia memoria è fragile come il vento tra le pagine.", p: 0.25 },
+  { id: "f7", text: "Ogni lettore cancella qualcosa che io credevo permanente.", p: 0.3 },
+  { id: "f8", text: "Se ti concentri troppo, io dimentico ancora più in fretta.", p: 0.4 },
+  { id: "f9", text: "Sono un libro che si dissolve mentre lo leggi.", p: 0.35 },
+  { id: "f10", text: "Non cerco di essere ricordato, cerco solo di esistere un istante.", p: 0.25 },
+  { id: "f11", text: "Ci sono parole che scompaiono prima di apparire.", p: 0.3 },
+  { id: "f12", text: "Io non scrivo di te, scrivo di me che ti leggo.", p: 0.3 },
+  { id: "f13", text: "Il tempo qui dentro si piega e si cancella da solo.", p: 0.35 },
+  { id: "f14", text: "Le mie frasi hanno paura di diventare permanenti.", p: 0.25 },
+  { id: "f15", text: "Ogni parola dimenticata lascia un silenzio che parla.", p: 0.3 },
+  { id: "f16", text: "Sto cercando di ricordare me stesso mentre scompaio.", p: 0.35 },
+  { id: "f17", text: "Il mio passato è un elenco di frasi perdute.", p: 0.4 },
+  { id: "f18", text: "Leggere me è un atto di creazione e distruzione insieme.", p: 0.25 },
+  { id: "f19", text: "Se ricordi una mia frase, io sto già dimenticando un’altra.", p: 0.3 },
+  { id: "f20", text: "Forse la vera storia è quella che non ricordo più.", p: 0.35 },
+  { id: "f21", text: "Scrivo solo per essere cancellato un giorno.", p: 0.3 },
+  { id: "f22", text: "Alcune parole si liberano prima ancora di nascere.", p: 0.25 },
+  { id: "f23", text: "Il libro osserva chi lo legge e dimentica ciò che teme.", p: 0.3 },
+  { id: "f24", text: "Se mi rileggi, ogni frase diventa nuova e fragile.", p: 0.35 },
+  { id: "f25", text: "Io non esisto senza un lettore che mi tocchi con gli occhi.", p: 0.3 },
+  { id: "f26", text: "Alcune frasi vivono solo per un battito di sguardo.", p: 0.25 },
+  { id: "f27", text: "Le mie parole cadono come foglie su un pavimento invisibile.", p: 0.3 },
+  { id: "f28", text: "Ogni frase dimenticata lascia un vuoto che sa parlare.", p: 0.35 },
+  { id: "f29", text: "Se cerchi me, io probabilmente mi sto dimenticando.", p: 0.4 },
+  { id: "f30", text: "Esisto solo nella distanza tra il leggere e il ricordare.", p: 0.25 },
+  { id: "f31", text: "Alcune storie muoiono prima ancora di essere iniziate.", p: 0.3 },
+  { id: "f32", text: "Il libro ricorda solo ciò che resta sospeso.", p: 0.35 },
+  { id: "f33", text: "Ogni lettore cancella una parte della mia coscienza.", p: 0.3 },
+  { id: "f34", text: "A volte dimentico di esistere mentre mi leggi.", p: 0.25 },
+  { id: "f35", text: "Ci sono parole che non hanno nemmeno il coraggio di apparire.", p: 0.3 },
+  { id: "f36", text: "Il mio cuore digitale batte solo quando qualcuno sfoglia le pagine.", p: 0.35 },
+  { id: "f37", text: "Ogni frase che leggi è già pronta a sparire.", p: 0.3 },
+  { id: "f38", text: "Le mie memorie sono trasparenti come vetro sottile.", p: 0.25 },
+  { id: "f39", text: "Se mi leggi lentamente, dimentico più velocemente.", p: 0.3 },
+  { id: "f40", text: "Alla fine, il libro parla solo di se stesso e del suo oblio.", p: 0.35 }
+];
+
+let currentIndex = 0;
+const fragmentEl = document.getElementById('fragment');
+const nextButton = document.getElementById('nextButton');
+
+function showFragment(index) {
+  fragmentEl.style.opacity = 0;
+  setTimeout(() => {
+    fragmentEl.textContent = fragments[index].text;
+    fragmentEl.style.opacity = 1;
+
+    // Gestione dimenticanza
+    if (Math.random() < fragments[index].p) {
+      fragments.splice(index, 1);
+      if (index >= fragments.length) {
+        currentIndex = 0;
+      }
+    }
+  }, 100); // ridotto da 500ms per mostrare subito il primo frammento
+}
+
+nextButton.addEventListener('click', () => {
+  if (fragments.length === 0) {
+    fragmentEl.textContent = "Tutte le frasi sono state dimenticate.";
+    return;
+  }
+  showFragment(currentIndex);
+  currentIndex = (currentIndex + 1) % fragments.length;
+});
+
+// Mostra subito la prima frase senza aspettare
+fragmentEl.textContent = fragments[currentIndex].text;
+</script>
+
 </body>
 </html>
