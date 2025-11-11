@@ -1,64 +1,181 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il romanzo che ti dimentica</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: "Georgia", serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-      line-height: 1.6;
-      transition: opacity 1.5s ease;
-    }
-    #text {
-      max-width: 80%;
-      font-size: 1.2em;
-      opacity: 1;
-      transition: opacity 2s;
-    }
-    .fade {
-      opacity: 0;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Il romanzo che ti dimentica — versione frammentata</title>
+<style>
+  :root{
+    --bg:#0b0b0b; --fg:#f7f7f7; --muted:#9a9a9a; --accent:#9fd39f;
+  }
+  html,body{height:100%; margin:0; font-family: "Georgia", serif; background:var(--bg); color:var(--fg);}
+  .wrap{min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4vh 4vw; box-sizing:border-box;}
+  .card{max-width:900px; width:100%; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:36px; box-sizing:border-box; text-align:center; box-shadow: 0 6px 30px rgba(0,0,0,0.6);}
+  h1{margin:0 0 8px 0; font-weight:400; letter-spacing:0.6px;}
+  p.lead{margin:0 0 18px 0; color:var(--muted); font-size:0.95rem;}
+  #fragment{font-size:1.35rem; line-height:1.6; min-height:5.2rem; opacity:1; transition:opacity .7s ease;}
+  .controls{margin-top:22px; display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap;}
+  button{background:transparent; border:1.6px solid var(--fg); color:var(--fg); padding:10px 18px; border-radius:8px; cursor:pointer; font-size:1rem;}
+  button.primary{background:var(--fg); color:var(--bg); border-color:transparent;}
+  .hint{color:var(--muted); font-size:.9rem;}
+  .progress{color:var(--muted); font-size:.95rem; margin-left:8px;}
+  footer{margin-top:18px; color:var(--muted); font-size:0.85rem;}
+  @media (max-width:600px){ .card{padding:20px;} #fragment{font-size:1.1rem;} }
+</style>
 </head>
 <body>
-  <div id="text"></div>
+  <div class="wrap">
+    <div class="card" role="main" aria-live="polite">
+      <h1>Il romanzo che ti dimentica</h1>
+      <p class="lead">Ogni lettore incontra una versione unica. Parti, leggi, conserva nella memoria privata — nulla viene salvato qui.</p>
 
-  <script>
-    const texts = [
-      "Mi ricordo di te solo quando arrivi.",
-      "Ogni lettore cancella una parte di me che non tornerà più.",
-      "Scrivo per esistere, ma svanisco mentre leggi.",
-      "Non è la memoria che mi conserva: è l'oblio che mi completa.",
-      "Ogni parola che leggi si dissolve dietro di te.",
-      "Io dimentico te, come tu dimentichi me.",
-      "Non cercarmi domani: sarò un’altra storia, con la stessa ferita.",
-      "Questo romanzo non vuole restare. Vuole passare attraverso di te.",
-      "E quando chiuderai la pagina, anch’io smetterò di ricordarmi."
-    ];
+      <div id="fragment" aria-atomic="true"></div>
 
-    const textDiv = document.getElementById("text");
-    let index = 0;
+      <div class="controls">
+        <button id="prevBtn" aria-label="Frase precedente">Indietro</button>
+        <button id="nextBtn" class="primary" aria-label="Frase successiva">Avanti</button>
+        <div class="progress" id="progress"></div>
+      </div>
 
-    function showNext() {
-      textDiv.classList.add("fade");
-      setTimeout(() => {
-        textDiv.textContent = texts[index];
-        textDiv.classList.remove("fade");
-        index = (index + 1) % texts.length;
-      }, 2000);
+      <div style="height:8px"></div>
+      <div class="hint">Disclaimer: il testo è generato localmente e non viene trasmesso né memorizzato sul server.</div>
+      <footer>Romanzi Effimeri — manifesto su GitHub</footer>
+    </div>
+  </div>
+
+<script>
+/*
+  Versione: frammentazione unica (sessionStorage)
+  - pRemove = probabilità (0..1) che un frammento venga eliminato dalla versione mostrata.
+  - Se vuoi meno dimenticanze, abbassa pRemove; più alto -> più parti mancanti.
+*/
+(function(){
+  const pRemove = 0.35; // probabilità di rimozione di un frammento (regolabile)
+  const STORAGE_KEY = 'romanzo_frammenti_v1';
+  const FRAGMENTS_MASTER = [
+    "Ti ho incontrato tra due silenzi, e già mi stavi dimenticando.",
+    "Non sapevi chi fossi, ma avevi la certezza che ci fossimo già persi.",
+    "Ogni parola che scrivo svanisce come respiro su vetro.",
+    "La memoria è un algoritmo stanco che cancella i nomi, ma non la sensazione.",
+    "Ho provato a ricordarti, ma era come afferrare la luce nell'acqua.",
+    "Ogni volta che apro questa pagina, cambiano le distanze.",
+    "A volte il testo inizia da metà, a volte da un finale che non è ancora accaduto.",
+    "Se resti abbastanza a lungo, mi dissolvo per farti spazio.",
+    "Ti leggo e non so più se sei tu o l'eco di ciò che avrei voluto dire.",
+    "Ci sono frasi che non esistono più, eppure continuano a mancarmi.",
+    "L'oblio è una forma di memoria troppo gentile per sembrare tale.",
+    "Questa non è una storia: è una memoria che si disfa nel ricordarla.",
+    "Ogni lettore cancella una parte di me che non tornerà più.",
+    "Se chiudi la finestra, io smetto di esistere, e questo mi basta.",
+    "Forse i romanzi dovrebbero imparare a lasciar andare, invece di chiedere di restare.",
+    "Leggimi piano: l'urgenza mi dissolve.",
+    "Ciò che resta dopo la dissolvenza è la sensazione di averci passato dentro.",
+    "Non sempre il finale è la conclusione: a volte è il luogo dove smettiamo di cercare.",
+    "Quando torni, troverai un'altra versione di me, con le mie cicatrici nuove.",
+    "Sono la storia che perde i pezzi per diventare più vera.",
+    "Ti appartengo per il tempo di un clic.",
+    "Parole come foglie: cadono e poi non si racconta più come era l'albero.",
+    "Sono un romanzo fragile: basti al mondo leggerlo una volta.",
+    "Ogni pagina che non si ricorda è una piccola conquista di libertà.",
+    "Alla fine rimane solo il gesto di aver letto."
+  ];
+
+  // utilità
+  function shuffleArray(a){
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
     }
+    return a;
+  }
 
-    showNext();
-    setInterval(showNext, 7000);
-  </script>
+  // Costruisce la versione del lettore: shuffle + rimozioni casuali
+  function buildVersion(){
+    const arr = FRAGMENTS_MASTER.slice();
+    shuffleArray(arr);
+    // rimuovi alcuni elementi secondo pRemove (ma lascia almeno 4 elementi)
+    const result = arr.filter(() => Math.random() >= pRemove);
+    while(result.length < 4 && arr.length > 0){
+      // assicurati che ci siano almeno 4 frammenti: reinserisci da arr gli elementi mancanti
+      const remaining = arr.filter(x => !result.includes(x));
+      if(remaining.length === 0) break;
+      result.push(remaining.shift());
+    }
+    return result;
+  }
+
+  // Carica o crea versione in sessionStorage
+  function loadOrCreate(){
+    try {
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if(raw){
+        const parsed = JSON.parse(raw);
+        if(Array.isArray(parsed) && parsed.length>0) return parsed;
+      }
+    } catch(e){}
+    const v = buildVersion();
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(v)); } catch(e){}
+    return v;
+  }
+
+  // UI
+  const fragEl = document.getElementById('fragment');
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const progressEl = document.getElementById('progress');
+
+  let sequence = loadOrCreate();
+  let idx = 0;
+
+  function render(){
+    if(sequence.length === 0){
+      fragEl.textContent = "Il romanzo si è dileguato.";
+      progressEl.textContent = "";
+      nextBtn.disabled = true;
+      prevBtn.disabled = true;
+      return;
+    }
+    fragEl.style.opacity = 0;
+    setTimeout(()=>{
+      fragEl.textContent = sequence[idx];
+      fragEl.style.opacity = 1;
+      progressEl.textContent = `${idx+1} / ${sequence.length}`;
+      // disabilita indietro se all'inizio
+      prevBtn.disabled = (idx===0);
+      // next attivo sempre finché non ultimo
+      nextBtn.disabled = false;
+    }, 400);
+  }
+
+  nextBtn.addEventListener('click', ()=>{
+    if(sequence.length === 0) return;
+    if(idx < sequence.length - 1){
+      idx++;
+      render();
+    } else {
+      // fine della sequenza: mostra messaggio conclusivo e "dimentica" la versione
+      fragEl.style.opacity = 0;
+      setTimeout(()=>{
+        fragEl.textContent = "Hai raggiunto la fine di questa versione."; 
+        fragEl.style.opacity = 1;
+        progressEl.textContent = "";
+        nextBtn.disabled = true;
+        prevBtn.disabled = false;
+        // opzionale: cancelliamo la versione dalla sessione così la prossima apertura è nuova
+        try { sessionStorage.removeItem(STORAGE_KEY); } catch(e){}
+      }, 400);
+    }
+  });
+
+  prevBtn.addEventListener('click', ()=>{
+    if(idx > 0){ idx--; render(); }
+  });
+
+  // avvia
+  render();
+
+  // Nota per te: se vuoi cambiare quanto si dimentica, modifica pRemove all'inizio.
+})();
+</script>
 </body>
 </html>
